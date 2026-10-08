@@ -1,0 +1,246 @@
+/* ==========================================================================
+   1. BASE STYLES & CSS RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #8B5A2B;      /* Warm Earth / Ochre */
+    --secondary-color: #D2B48C;    /* Kalahari Sand */
+    --accent-color: #A0522D;       /* Terracotta */
+    --dark-neutral: #2C221E;     /* Deep Charcoal Charcoal */
+    --light-neutral: #FDFBF7;    /* Warm Off-White */
+    --white: #FFFFFF;
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --base-font-size: 16px;
+    --spacing-unit: 1rem;
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease;
+}
+
+html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark-neutral);
+    background-color: var(--light-neutral);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY SCALES
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 2.25rem; font-weight: 700; }
+h2 { font-size: 1.75rem; font-weight: 600; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover, a:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. LAYOUT STRUCTURE & NAVIGATION
+   ========================================================================== */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav a {
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+}
+
+nav a:hover, nav a:focus {
+    background-color: var(--secondary-color);
+    color: var(--dark-neutral);
+    text-decoration: none;
+}
+
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Grid Layout for Products and Content Cards */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.card img, picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* Forms & Interactive Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
+}
+
+button, .btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color var(--transition-speed);
+}
+
+button:hover, button:focus, .btn:hover {
+    background-color: var(--accent-color);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--dark-neutral);
+    color: var(--light-neutral);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+footer a {
+    color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DESIGN & MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablet Breakpoint (Up to 900px) */
+@media screen and (max-width: 900px) {
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+}
+
+/* Mobile Breakpoint (Up to 600px) */
+@media screen and (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.35rem; }
+}
